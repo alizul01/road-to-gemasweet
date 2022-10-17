@@ -1,5 +1,6 @@
+package prioritas;
+
 import java.util.*;
-import java.lang.*;
 
 /**
  * Main
@@ -12,7 +13,7 @@ public class Main {
         ArrayList<City> l = new ArrayList<City>();
 
         int p = s.nextInt();
-        res = new String[p];
+        String [] res = new String[p];
 
         for (int i = 0; i < p; i++) {
             String c1 = s.next();
@@ -40,6 +41,8 @@ public class Main {
 
             System.out.println(c.first + " " + c.second + " " + c.result);
         }
+
+        s.close();
     }
 
 }
