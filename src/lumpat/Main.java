@@ -100,7 +100,7 @@ public class Main {
         // 1 - m.length - 2
 
         /// logic
-        // available = mSpace - rLoc.get(wP - 1) - rLoc.get(wP + 1);
+        // available = mSpace - xLoc.get(wP - 1) - xLoc.get(wP + 1);
         // if (mSpace.isNotEpty)
 
         for (int i = 0; i < mSpace.size(); i++) {
@@ -110,10 +110,75 @@ public class Main {
             }
         }
 
-        if(mSpace.size() > 0) {
-            System.out.println("Dawala bisa menemukan cepot");
+        // ceck if D and C is separated by blocking x's
+        boolean hasBlocking = false;
+
+        for (int k : xLoc.keySet()) {
+            ArrayList<Integer> v = xLoc.get(k);
+            System.out.println("cp[0] = " + cp[0]);
+            System.out.println("dp[0] = " + dp[0]);
+            System.out.println("k = " + k);
+            System.out.println("v = " + v);
+
+            if(v.size() == l - 2) {
+                if((cp[0] < k && dp[0] > k) || (cp[0] > k && dp[0] < k)) {
+                    hasBlocking = true;
+                }
+            }
+        }
+
+        System.out.println("Has blocking = " + hasBlocking);
+
+        if((mSpace.size() > 0 && !hasBlocking) || (cp[0] > wP && dp[0] > wP) || (cp[0] < wP && dp[0] < wP)) {
+            System.out.println("Dawala bertemu cepot");
         } else {
-            System.out.println("Dawala tidak bisa menemukan cepot");
+            System.out.println("Dawala tidak bertemu cepot");
+        }
+
+        for (int k : xLoc.keySet()) {
+            ArrayList<Integer> v = xLoc.get(k);
+            // calculate available left wall
+            if(v.contains(1) && lSpace.contains(k)) {
+                lSpace.remove(lSpace.indexOf(k));
+            }
+
+            if(v.contains(l - 2) && rSpace.contains(k)) {
+                rSpace.remove(rSpace.indexOf(k));
+            }
+
+            if(k == 1) {
+                // tSpace - v
+                tSpace.removeAll(v);
+            }
+
+            if(k == p - 2) {
+                bSpace.removeAll(v);
+            }
+        }
+
+        // for (int i = 1; i < l - 1; i++) {
+        //     if(tSpace.contains(i))
+        // }
+
+        boolean isWallBlocked = mSpace.isEmpty();
+        boolean isAcross = (cp[0] < wP && !bSpace.isEmpty()) || (cp[0] > wP && !tSpace.isEmpty());
+        boolean hasAccess = false;
+
+        if(isAcross && isWallBlocked) { // kalau ketutup jalan
+            if(cp[0] < wP && !tSpace.isEmpty()) { // kalau ada jalan keluar di atas
+                hasAccess = true;
+            }
+            if(cp[0] > wP && !bSpace.isEmpty()) { // kalau ada jalan keluar di bawah
+                hasAccess = true;
+            }
+        } else {
+            hasAccess = true;
+        }
+
+        if(hasAccess && (tSpace.size() > 0 || bSpace.size() > 0 || lSpace.size() > 0 || rSpace.size() > 0)) {
+            System.out.println("ada jalan Cepot lumpat");
+        } else {
+            System.out.println("tidak ada jalan Cepot lumpat");
         }
 
         sc.close();
