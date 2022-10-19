@@ -3,5 +3,6 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
-    ]
+    ],
+    "cph.language.java.Args": "-cp D:\\\\College\\\\Additional\\\\Activity\\\\road-to-gemasweet\\\\road-to-gemasweet\\\\bin"
 }

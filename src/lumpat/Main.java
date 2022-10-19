@@ -82,26 +82,11 @@ public class Main {
             }
         });
 
-        // System.out.println("Posisi C = "+ cp[0] + " " + cp[1]);
-        // System.out.println("Posisi D = "+ dp[0] + " " + dp[1]);
-        // System.out.println("Posisi M = " + wP);
-        // System.out.println("M Space : ");
-        // mSpace.forEach((n) -> System.out.println(n));
-
         xLoc.forEach((k, v) -> {
             System.out.println("Obs ke- " + k);
             System.out.println("XLoc = " + v);
             v.forEach((n) -> System.out.println(n));
         });
-        // lSpace.forEach((n) -> System.out.println(n));
-        // tSpace.forEach((n) -> System.out.println(n));
-        // rSpace.forEach((n) -> System.out.println(n));
-        // bSpace.forEach(x -> System.out.println(x));
-        // 1 - m.length - 2
-
-        /// logic
-        // available = mSpace - xLoc.get(wP - 1) - xLoc.get(wP + 1);
-        // if (mSpace.isNotEpty)
 
         for (int i = 0; i < mSpace.size(); i++) {
             if ((xLoc.get(wP - 1) != null && xLoc.get(wP - 1).contains(mSpace.get(i)))
@@ -110,7 +95,6 @@ public class Main {
             }
         }
 
-        // ceck if D and C is separated by blocking x's
         boolean hasBlocking = false;
 
         for (int k : xLoc.keySet()) {
@@ -156,19 +140,16 @@ public class Main {
             }
         }
 
-        // for (int i = 1; i < l - 1; i++) {
-        //     if(tSpace.contains(i))
-        // }
 
         boolean isWallBlocked = mSpace.isEmpty();
         boolean isAcross = (cp[0] < wP && !bSpace.isEmpty()) || (cp[0] > wP && !tSpace.isEmpty());
         boolean hasAccess = false;
 
-        if(isAcross && isWallBlocked) { // kalau ketutup jalan
-            if(cp[0] < wP && !tSpace.isEmpty()) { // kalau ada jalan keluar di atas
+        if(isAcross && isWallBlocked) {
+            if(cp[0] < wP && !tSpace.isEmpty()) {
                 hasAccess = true;
             }
-            if(cp[0] > wP && !bSpace.isEmpty()) { // kalau ada jalan keluar di bawah
+            if(cp[0] > wP && !bSpace.isEmpty()) {
                 hasAccess = true;
             }
         } else {
@@ -184,15 +165,4 @@ public class Main {
         sc.close();
 
     }
-
-    // public static boolean isHWall(char[] p) {
-    // for (int i = 0; i < p.length; i++) {
-    // if (p[i] == ' ') {
-    // return false;
-    // }
-    // }
-
-    // return true;
-    // }
-
 }
