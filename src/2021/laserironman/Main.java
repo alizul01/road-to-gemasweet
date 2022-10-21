@@ -28,13 +28,7 @@ public class Main {
             obstacle[i][1] = sc.nextInt();
             obstacle[i][2] = sc.nextInt();
             obstacle[i][3] = sc.nextInt();
-        } // input obstacle
-
-        // for (int i = 0; i < obstacle.length; i++) {
-        // System.out.println(Arrays.toString(obstacle[i]));
-        // } debug obstacle
-
-        // System.out.println(isIntersecting(new int[] { 5, 8 }, new int[] { 9, 4 }, new int[] { 7, 5 }, new int[] { 8, 5 }));
+        } 
 
         for (int i = 0; i < ultrons.length; i++) {
             int hit = 1;
