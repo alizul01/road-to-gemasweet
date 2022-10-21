@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 bool isIntersecting(int ironmanPos[], int ultronPos[], int obs1[], int obs2[]) {
@@ -48,13 +47,6 @@ int main()
         res += hit;
     }
     cout << res << endl;
-    for (int i = 0; i < N; i++) {
-        delete[] ultrons[i];
-    }
-    delete[] ultrons;
-    for (int i = 0; i < K; i++) {
-        delete[] obstacle[i];
-    }
-    delete[] obstacle;
+   
     return 0;
 }
