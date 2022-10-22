@@ -10,8 +10,6 @@ public class Flood {
         p = sc.nextInt();
         l = sc.nextInt();
 
-        int midPoint = -1;
-
         int[] cp = new int[2];
         int[] dp = new int[2];
 
@@ -22,11 +20,9 @@ public class Flood {
         for (int i = 0; i < p; i++) {
             m[i] = sc.nextLine().toCharArray();
 
-            for (int j = 0; j < m[i].length; j++) {
-                if (m[i][j] == '-' && i > 0 && i < m.length - 1) {
-                    midPoint = i;
-                }
+            if(cp[0] != 0 && cp[1] != 0 && dp[0] != 0 && dp[1] != 0) continue;
 
+            for (int j = 0; j < m[i].length; j++) {
                 if (m[i][j] == 'C') {
                     cp[0] = i;
                     cp[1] = j;
