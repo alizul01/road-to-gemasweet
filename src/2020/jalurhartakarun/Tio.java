@@ -20,37 +20,36 @@ public class Tio {
 
     for (int i = 0; i < k; i++) {
       ruangan.get(sc.nextInt()).add(sc.nextInt());
-  }
+    }
 
-    // loop every node, traverse every possible path, find max score for every path using DFS
+    int maxScore = -1;
+
     for (int i = 0; i < n; i++) {
-      int maxScore = 0;
-      Stack<Integer> stack = new Stack<>();
-      boolean[] visited = new boolean[n];
-      
-      stack.push(i);
-      visited[i] = true;
+      int temp = findMaxScore(ruangan, score, i);
 
-      while (!stack.isEmpty()) {
-        int node = stack.pop();
-        maxScore += score[node];
-
-        for (int j = 0; j < ruangan.get(node).size(); j++) {
-          int nextNode = ruangan.get(node).get(j);
-          if (!visited[nextNode]) {
-            stack.push(nextNode);
-            visited[nextNode] = true;
-          }
-        }
-      }
-
-      if (maxScore > max) {
-        max = maxScore;
+      if(temp > maxScore) {
+        maxScore = temp;
       }
     }
 
-    System.out.println(max);
+    System.out.println(maxScore);
 
     sc.close();
+  }
+
+  static int findMaxScore(Hashtable<Integer, ArrayList<Integer>> r, int[] score, int i) {
+    int currentScore = score[i];
+    ArrayList<Integer> neighbours = r.get(i);
+    
+    int maxNeighbourScore = 0;
+    for(int j = 0; j < neighbours.size(); j++) {
+      int neighbourScore = findMaxScore(r, score, neighbours.get(j));
+
+      if(neighbourScore > maxNeighbourScore) {
+        maxNeighbourScore = neighbourScore;
+      }
+    }
+
+    return currentScore + maxNeighbourScore;
   }
 }
