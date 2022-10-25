@@ -2,7 +2,7 @@ package jalurhartakarun;
 
 import java.util.*;
 
-public class Tio {
+public class Copilot {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Hashtable<Integer, ArrayList<Integer>> ruangan = new Hashtable<Integer, ArrayList<Integer>>();

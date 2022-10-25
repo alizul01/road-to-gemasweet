@@ -1,5 +1,3 @@
-package prioritas;
-
 import java.util.*;
 
 /**

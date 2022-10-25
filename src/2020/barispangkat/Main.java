@@ -1,8 +1,6 @@
 package barispangkat;
 
 import java.util.Scanner;
-import java.lang.Math;
-import java.math.BigInteger;
 
 public class Main {
     public static void main(String[] args) {
